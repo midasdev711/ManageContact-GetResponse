@@ -14,7 +14,6 @@ var read = fs.createReadStream('deleted.csv')
     list.push(contact)
   })
   .on('end', async () => {
-    var limit = 0
     var index = 0
     function delay() {
       setTimeout(async () => {
@@ -31,8 +30,6 @@ var read = fs.createReadStream('deleted.csv')
           url:     HOST_URL + SEARCH_CONTACT_URL
         });
 
-        limit += 1
-
         var searchResult = JSON.parse(response)
         // Search contactID which is in 'rgg_members' list
         for (var j = searchResult.length - 1; j >= 0; j--) {
@@ -44,7 +41,6 @@ var read = fs.createReadStream('deleted.csv')
               headers: {'X-Auth-Token': 'api-key ' + API_KEY},
               url:     HOST_URL + DELETE_CONTACT_URL + element.contactId
             })
-            limit += 1
             console.log(element.email + ' is deleted successfully')
             break
           }
