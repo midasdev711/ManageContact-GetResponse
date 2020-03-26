@@ -49,10 +49,7 @@ var read = fs.createReadStream('deleted.csv')
             break
           }
         }
-        if (limit < 70) {
-          limit = 0  
-          delay()
-        }
+        delay()
       }, 3000)
     }
     delay()
